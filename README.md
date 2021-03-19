@@ -1,4 +1,4 @@
-## LaTeX 入门教程
+# LaTeX 入门教程
 
 <span id="t"></span>
 
@@ -6,7 +6,7 @@
 
 <span id="hw"></span>
 
-#### 1. Hello World!
+## 1. Hello World!
 
 ---
 
@@ -64,7 +64,7 @@ Hello World!
 
 *[Back to top](#t)
 
-#### 2. Some Information
+## 2. Some Information
 
 ---
 
@@ -91,7 +91,7 @@ Hello World!
 
 *[Back to top](#t)
 
-#### 3. Section and Paragraph
+## 3. Section and Paragraph
 
 ---
 
@@ -109,7 +109,7 @@ Hello World!
 
 *[Back to top](#t)
 
-#### 4. Mathematics
+## 4. Mathematics
 
 ---
 
@@ -166,7 +166,7 @@ x, \quad x>0
 
 *[Back to top](#t)
 
-#### 5. Image and Table
+## 5. Image and Table
 
 ---
 
@@ -212,7 +212,7 @@ x, \quad x>0
 
 *[Back to top](#t)
 
-#### 6. Layouts
+## 6. Layouts
 
 ---
 
