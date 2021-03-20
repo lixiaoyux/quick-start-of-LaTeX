@@ -89,7 +89,7 @@ Hello World!
 
 分页命令：`\newpage`。空行命令`\vspace{3ex}`。
 
-关于加粗、斜体、下划线，分别使用`\textbf{}`，`\emph{}`，`underline{}`实现。
+关于加粗、斜体、下划线，分别使用`\textbf{}`，`\emph{}`，`\underline{}`实现。
 
 *[Back to top](#t)
 
