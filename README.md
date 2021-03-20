@@ -85,9 +85,11 @@ Hello World!
 
 在`\maketitle`后可加入`\tablecontents`，编译两次后显示目录及其内容。此处注意`\maketitle`和`\tablecontents`的位置顺序，若调换顺序，则部分内容不能正常显示。
 
-若想要将中文的`目录`(default)更换为英文的`Content`，使用`\renewcommand\contentsname{Content}`。
+关于输出格式，若想要输出**换行**，则需要使用两个换行或者`\par`，对于一个换行和多个空格，LaTeX视作一个空格处理。
 
-关于输出格式，若想要输出**换行**，则需要使用两个换行，对于一个换行和多个空格，LaTex视作一个空格处理。
+分页命令：`\newpage`。空行命令`\vspace{3ex}`。
+
+关于加粗、斜体、下划线，分别使用`\textbf{}`，`\emph{}`，`underline{}`实现。
 
 *[Back to top](#t)
 
@@ -103,9 +105,18 @@ Hello World!
 + `\paragraph{}`，{}可用于段落开头。
 + `\subparagraph{}`，{}可用于段落开头。
 
-**脚注**:
+若希望`section`居左，可使用命令`\ctexset{section={format={\Large\bfseries}}}`
 
-使用命令`\footnote{}`可以把脚注内容排印于当前页的页脚位置
+关于段落**首行缩进**，可以使用`indentfirst`宏包，并指定缩进字符数。
+
+```
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\par
+...
+```
+
+**脚注**：使用命令`\footnote{}`可以把脚注内容排印于当前页的页脚位置。
 
 *[Back to top](#t)
 
@@ -119,7 +130,9 @@ Hello World!
 \usepackage{amsmath}
 ```
 
-具体格式同**markdown**，不过建议对于行间公式插入使用`$...$`，对于行间公式插入使用`\[ ... \]`作为一个数学环境(不带编号)。若需要带编号的数学公式，对于单行公式，可使用
+具体格式同**markdown**，不过建议对于行间公式插入使用`$...$`，对于行间公式插入使用`\[ ... \]`作为一个数学环境(不带编号)。
+
+若需要带编号的数学公式，对于单行公式，可使用
 
 ```
 \begin{equation}
@@ -160,17 +173,43 @@ x, \quad x>0
 \]
 ```
 
-其中，`\quad`是间隔。
+其中，`\quad`是间隔（缩进）。
 
 关于常用的公式，请查询[相关资料](https://blog.csdn.net/caiandyong/article/details/53351737)。
 
+**插入代码块**: 使用`listings`宏包。
+
+```
+\begin{lstlisting}
+...
+\end{lstlisting}
+```
+
+关于其设置，可在导言区定义：
+
+```
+\lstset{
+ columns=fixed,       
+ numbers=left,                                        % 在左侧显示行号
+ numberstyle=\tiny\color{gray},                       % 设定行号格式
+ frame=none,                                          % 不显示背景边框,可选shadow,single等
+ backgroundcolor=\color[RGB]{245,245,244},            % 设定背景颜色
+ keywordstyle=\color[RGB]{40,40,255},                 % 设定关键字颜色
+ numberstyle=\footnotesize\color{darkgray},           
+ commentstyle=\it\color[RGB]{0,96,96},                % 设置代码注释的格式
+ stringstyle=\rmfamily\slshape\color[RGB]{128,0,0},   % 设置字符串格式
+ showstringspaces=false,                              % 不显示字符串中的空格
+ language=c++,                                        % 设置语言
+}
+```
+
 *[Back to top](#t)
 
-## 5. Image and Table
+## 5. Insertion
 
 ---
 
-插入图片可以使用`graphicx`宏包中的`\includegraphics`命令。
+**插入图片**可以使用`graphicx`宏包中的`\includegraphics{}`命令。
 
 ```
 \documentclass{article}
@@ -188,7 +227,7 @@ x, \quad x>0
 
 上例将图片宽度缩放至**当前页面宽度**的百分之八十。
 
-表格功能使用`tabular`环境，使用`\hline`表示横线，`|`表示竖线，`&`来分列，用`\\`来换行。对于居左、居中、居右等对齐方式，分别用`l`，`c`，`r`表示。
+插入**表格**可以使用`tabular`环境，使用`\hline`表示横线，`|`表示竖线，`&`来分列，用`\\`来换行。对于居左、居中、居右等对齐方式，分别用`l`，`c`，`r`表示。
 
 ```
 \begin{tabular}{|l|c|r}
@@ -210,6 +249,14 @@ x, \quad x>0
 \end{center}
 ```
 
+**插入超链接**：使用`url`宏包和`\url{}`命令插入链接。
+
+```
+\usepackage{url}
+...
+百度\footnote{\url{www.baidu.com}}
+```
+
 *[Back to top](#t)
 
 ## 6. Layouts
@@ -229,7 +276,7 @@ x, \quad x>0
 ```
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{\author}			% 页眉左
+\lhead{\author{}}			% 页眉左
 \chead{}
 \rhead{}				% 页眉右
 \lfoot{}				% 页脚左
@@ -237,11 +284,13 @@ x, \quad x>0
 \rfoot{}
 ```
 
-调整行间距，可以使用`setpace`宏包。
+调整**行间距**，可以使用`setpace`宏包。
 
 ```
 \usepackage{setpace}
 \onehalfspacing			% 设置行距为字号大小的1.5倍
 ```
+
+调整**段间距**，可以在导言区使用命令`\setlength{\parskip}{0.6\baselineskip}`。
 
 *[Back to top](#t)
